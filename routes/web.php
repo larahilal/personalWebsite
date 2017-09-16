@@ -1,4 +1,7 @@
 <?php
 
-Route::get('home', 'loginController@login')->name('login');
+
+Route::get('/', 'loginController@displayHome')->name('home');
+
+Route::get('/login', 'loginController@login')->name('login');
 
