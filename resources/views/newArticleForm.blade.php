@@ -4,7 +4,7 @@
 
 
 
-    <form action="saveNewArticle" method="POST">
+    <form action={{ route('saveNewArticle') }} method="POST">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         Title:

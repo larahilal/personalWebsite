@@ -4,7 +4,7 @@
 
 
 
-    <form action="register" method="POST">
+    <form action={{ route('register') }} method="POST">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         Email:

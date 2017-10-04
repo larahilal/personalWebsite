@@ -25,7 +25,7 @@ class articleController extends Controller
 
         $article->save();
 
-        return redirect()->route('signedInHome');
+        return redirect()->route('cmsHome');
 
     }
 
