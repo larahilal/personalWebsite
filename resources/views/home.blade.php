@@ -1,24 +1,27 @@
 @extends('layout')
 
-@section('home')
+@section('content')
 
+  Welcome to bla bla bla bla
 
   <br>
+  <br>
+  <a href="{{ route('signUp') }}">Sign Up</a> or <a href="{{ route('loginForm') }}">Log in</a> to leave comments
+  <br>
+  <br>
 
-  <form action="login" method="POST">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  @foreach($allArticles as $article)
 
-      Email:
-      <input type="text" name="email"></br></br>
+    {{ $article->title }}
+    <br>
+    {{ $article->body }}
 
-      Password:
+    <br>
+    <br>
 
-      <input type="password" name="password"></br></br>
+  @endforeach
 
-      Submit:
-      <input type="submit" value="Submit">
 
-  </form>
 
 
 @stop
