@@ -11,7 +11,7 @@ class articleController extends Controller
 
     public function newArticleForm(){
 
-        return view('newArticleForm');
+        return view('cms/newArticleForm');
 
     }
 
@@ -41,7 +41,7 @@ class articleController extends Controller
 
         $article = article::where('id', $articleId)->first();
 
-        return view('editArticle', array('article'=>$article));
+        return view('cms/editArticle', array('article'=>$article));
 
     }
 
@@ -59,11 +59,13 @@ class articleController extends Controller
 
     }
 
-    public function deleteArticle(Request $request){
+    public function deleteArticle($articleId){
 
-        $article = article::where('id', $request->id)->first();
+        $article = article::where('id', $articleId)->first();
 
         $article->delete();
+
+
 
 
     }

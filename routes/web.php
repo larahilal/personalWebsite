@@ -29,5 +29,5 @@ Route::post('/cms/articles/save', 'articleController@saveNewArticle')->name('sav
 Route::get('/cms/articles/edit/{articleId}', 'articleController@editArticle')->name('editArticle');
 Route::post('/cms/articles/update', 'articleController@updateArticle')->name('updateArticle');
 
-Route::get('/cms/articles/delete', 'articleController@deleteArticle')->name('deleteArticle');
+Route::get('/cms/articles/delete/{articleId}', 'articleController@deleteArticle')->name('deleteArticle');
 
