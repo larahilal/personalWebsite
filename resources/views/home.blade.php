@@ -3,6 +3,9 @@
 @section('content')
 
     This is Lara's personal blog.
+    <br>
+    <br>
+    <br>
 
     @guest
 
@@ -52,7 +55,9 @@
 
             {{ $article->title }}
             <br>
-            {{ $article->body }}
+            {{ $article->abbreviation }}
+            <br>
+            <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
 
             <br>
             <br>
@@ -61,11 +66,27 @@
 
         @else
 
+@section('user')
+
+    You are signed in as:
+
+    <br>
+
+    {{ Auth::user()->email }}
+
+    <br>
+
+    <a href="{{ route('logout') }}">LogOut</a>
+
+@stop
+
             @foreach($allArticles as $article)
 
                 {{ $article->title }}
                 <br>
-                {{ $article->body }}
+                {{ $article->abbreviation }}
+                <br>
+                <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
 
                 <br>
                 <br>

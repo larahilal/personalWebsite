@@ -8,36 +8,32 @@
         </div>
     @endif
 
-    <br>
-    <br>
-
     <a href="{{ route('cmsHome') }}"> My home </a>
 
-    <br>
-    <br>
+    <table style="width:100%">
 
-    @foreach($allArticles as $article)
+        <tr>
+            <th> Title</th>
+            <th> Edit</th>
+            <th> Delete</th>
+        </tr>
 
-        {{ $article->title }}
-        <a href="{{ route('editArticle', array('articleId' => $article->id)) }}"> edit </a>
-        <a href="{{ route('deleteArticle', array('articleId' => $article->id)) }}"> delete </a>
+        @foreach($allArticles as $article)
 
-        <br>
+            <tr>
+                <td>{{ $article->title }} </td>
+                <td> <a href="{{ route('editArticle', array('articleId' => $article->id)) }}"> edit </a> </td>
+                <td> <a href="{{ route('deleteArticle', array('articleId' => $article->id)) }}"> delete </a> </td>
+            </tr>
+            {{--   {!! str_replace("\n", '<br>', $article->body) !!}
 
-        {{ $article->abbreviation }}
-        <br>
-        <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
-
-        {{--   {!! str_replace("\n", '<br>', $article->body) !!}
-
-        --}}
+            --}}
 
            <br>
-           <br>
+
+        @endforeach
+
+    </table>
 
 
-       @endforeach
-
-
-
-   @stop
+@stop

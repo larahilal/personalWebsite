@@ -37,7 +37,7 @@ class userController extends Controller
 
         $user->save();
 
-        return redirect()->route('signedInHome')->with('status', 'Congrats! Comment Away!');
+        return redirect()->route('home')->with('status', 'Congrats! Comment Away!');
 
 
     }
@@ -59,7 +59,7 @@ class userController extends Controller
 
             } else {
 
-                return redirect()->route('signedInHome')->with('status', 'You are logged in');
+                return redirect()->route('home')->with('status', 'You are logged in');
 
             }
 
