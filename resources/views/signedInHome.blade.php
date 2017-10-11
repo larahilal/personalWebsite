@@ -17,7 +17,9 @@
 
         <br>
 
-        {{ $article->body }}
+        {{ $article->abbreviation }}
+        <br>
+        <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
 
         <br>
         <br>

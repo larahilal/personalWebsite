@@ -6,5 +6,7 @@
 
     <a href="{{ route('allArticles') }}">View</a> all articles.
 
+    <a href="{{ route('logout') }}">Logout</a>.
+
 
 @stop

@@ -3,7 +3,7 @@
 // SITE ROUTES
 
 
-Route::get('/', 'userController@displayHome')->name('home');
+Route::get('/', 'homeController@displayHome')->name('home');
 
 Route::get('/signUpForm', 'userController@signUp')->name('signUp');
 
@@ -13,7 +13,11 @@ Route::get('/loginForm', 'userController@loginForm')->name('loginForm');
 
 Route::post('/login', 'userController@login')->name('login');
 
-Route::get('/signedInHome', 'userController@signedInHome')->name('signedInHome');
+Route::get('/signedInHome', 'homeController@signedInHome')->name('signedInHome');
+
+Route::get('/logout', 'userController@logout')->name('logout');
+
+Route::get('/articles/{articleId}', 'articleController@displayFullArticle')->name('displayFullArticle');
 
 
 

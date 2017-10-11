@@ -15,6 +15,14 @@ class articleController extends Controller
 
     }
 
+    public function displayFullArticle($articleId){
+
+        $article = article::where('id', $articleId)->first();
+
+        return view('fullArticle', array('article'=>$article));
+
+    }
+
     public function saveNewArticle(Request $request){
 
         $article = new article();
@@ -33,7 +41,13 @@ class articleController extends Controller
 
         $allArticles = article::all();
 
-        return view('allArticles', array('allArticles'=> $allArticles));
+        foreach($allArticles as $article){
+
+            $article->abbreviation = substr($article->body, 0, 100).'...';
+
+        }
+
+        return view('cms/allArticles', array('allArticles'=> $allArticles));
 
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,9 +65,16 @@
     </style>
 </head>
 <body>
+
+<div class="top-right">
+
+    @yield('user')
+
+</div>
+
 <div class="flex-center position-ref full-height">
 
-  
+
 
 
     <div class="content">

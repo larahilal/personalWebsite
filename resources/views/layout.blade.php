@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,8 +41,15 @@
             top: 18px;
         }
 
+        .top-left {
+            position: absolute;
+            left: 10px;
+            top: 18px;
+        }
+
         .content {
             text-align: center;
+            padding: 10px 200px 0 200px;
         }
 
         .title {
@@ -65,8 +72,20 @@
     </style>
 </head>
 <body>
+
+
 <div class="flex-center position-ref full-height">
 
+    <div class="top-left">
+
+        @yield('backButton')
+
+    </div>
+    <div class="top-right">
+
+        @yield('user')
+
+    </div>
 
     <div class="content">
         <div class="title m-b-md">

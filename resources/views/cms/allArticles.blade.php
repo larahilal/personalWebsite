@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('cms/cmsLayout')
 
 @section('content')
 
@@ -24,14 +24,20 @@
 
         <br>
 
-        {{ $article->body }}
-
+        {{ $article->abbreviation }}
         <br>
-        <br>
+        <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
+
+        {{--   {!! str_replace("\n", '<br>', $article->body) !!}
+
+        --}}
+
+           <br>
+           <br>
 
 
-    @endforeach
+       @endforeach
 
 
 
-@stop
+   @stop

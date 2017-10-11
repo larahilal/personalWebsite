@@ -10,18 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 use App\User;
 
-use App\article;
+
 
 class userController extends Controller
 {
-
-    public function displayHome(){
-
-        $allArticles = article::all();
-
-        return view ('home', array('allArticles'=>$allArticles));
-
-    }
 
     public function signUp(){
 
@@ -79,14 +71,13 @@ class userController extends Controller
 
     }
 
-    public function signedInHome(){
+    public function logout(){
 
-        $allArticles = article::all();
+        Auth::logout();
 
-        return view('signedInHome', array('allArticles'=>$allArticles));
+        return redirect()->route('home');
 
     }
-
 
 
 }
