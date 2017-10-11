@@ -11,7 +11,7 @@ class articleController extends Controller
 
     public function newArticleForm(){
 
-        return view('cms/newArticleForm');
+        return view('cms/cmsNewArticleForm');
 
     }
 
@@ -47,7 +47,7 @@ class articleController extends Controller
 
         }
 
-        return view('cms/allArticles', array('allArticles'=> $allArticles));
+        return view('cms/cmsAllArticles', array('allArticles'=> $allArticles));
 
     }
 
@@ -55,7 +55,7 @@ class articleController extends Controller
 
         $article = article::where('id', $articleId)->first();
 
-        return view('cms/editArticle', array('article'=>$article));
+        return view('cms/cmsEditArticle', array('article'=>$article));
 
     }
 
