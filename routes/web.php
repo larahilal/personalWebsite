@@ -21,15 +21,15 @@ Route::get('/articles/{articleId}', 'articleController@displayFullArticle')->nam
 
 // CMS ROUTES
 
-Route::get('/cms/', 'cmsController@cmsHome')->name('cmsHome');
+Route::get('/cms/', 'cms\homeController@cmsHome')->name('cmsHome');
 
-Route::get('/cms/articles/', 'articleController@getAllArticles')->name('allArticles');
+Route::get('/cms/articles/', 'cms\articleController@getAllArticles')->name('allArticles');
 
-Route::get('/cms/articles/newForm', 'articleController@newArticleForm')->name('newArticleForm');
-Route::post('/cms/articles/save', 'articleController@saveNewArticle')->name('saveNewArticle');
+Route::get('/cms/articles/newForm', 'cms\articleController@newArticleForm')->name('newArticleForm');
+Route::post('/cms/articles/save', 'cms\articleController@saveNewArticle')->name('saveNewArticle');
 
-Route::get('/cms/articles/edit/{articleId}', 'articleController@editArticle')->name('editArticle');
-Route::post('/cms/articles/update', 'articleController@updateArticle')->name('updateArticle');
+Route::get('/cms/articles/edit/{articleId}', 'cms\articleController@editArticle')->name('editArticle');
+Route::post('/cms/articles/update', 'cms\articleController@updateArticle')->name('updateArticle');
 
-Route::get('/cms/articles/delete/{articleId}', 'articleController@deleteArticle')->name('deleteArticle');
+Route::get('/cms/articles/delete/{articleId}', 'cms\articleController@deleteArticle')->name('deleteArticle');
 
