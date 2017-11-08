@@ -28,30 +28,19 @@ class articleController extends Controller
 
         $searchedKeyword = $request->keyword;
 
-        $articles = article::all();
+        $articles = article::where('title', 'LIKE', '%' . $searchedKeyword . '%')->get();
 
-        $articlesWithKeywordInTitle = array();
+       // $articlesWithKeywordInTitle = array();
 
-        foreach($articles as $article){
-
-            $pos = stripos($article->title, $searchedKeyword);
-
-            if($pos !== false){
-
-                $articlesWithKeywordInTitle[] = $article;
-
-            }
-
-        }
-
-        if(empty($articlesWithKeywordInTitle)){
+        if(count($articles) == 0){
 
             return redirect()->route('searchForm')->with('status','Try a different keyword');
+
+        } else {
+
+            return view('articlesWithSearchedKeyword', array('articles'=>$articles));
+
         }
-
-
-        return view('articlesWithSearchedKeyword', array('articlesWithKeywordInTitle'=>$articlesWithKeywordInTitle));
-
 
     }
 

@@ -17,7 +17,13 @@
 
     {{ $article->body }}
 
+    <form action={{ route('saveComment') }} method="POST">
 
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+        <textarea rows="4" cols="50" name="comment">Enter text here...</textarea>
+
+    </form>
 
 
 

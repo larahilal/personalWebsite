@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @foreach($articlesWithKeywordInTitle as $article)
+    @foreach($articles as $article)
 
         {{ $article->title }}
         <br>
