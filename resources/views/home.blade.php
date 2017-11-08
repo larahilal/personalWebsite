@@ -5,6 +5,9 @@
     This is Lara's personal blog.
     <br>
     <br>
+
+    Click <a href="{{ route('searchForm') }}">here</a> to search for a specific article.
+
     <br>
 
     @guest
@@ -34,51 +37,51 @@
 
         @if(Auth::user()->email == 'lara.mustardino@gmail.com')
 
-@section('user')
+            @section('user')
 
-        You are signed in as:
+                You are signed in as:
 
-        <br>
+                <br>
 
-        {{ Auth::user()->email }}
+                {{ Auth::user()->email }}
 
-@stop
+            @stop
 
-        <br>
-
-        <a href="{{ route('cmsHome') }}">Go back to the CMS</a>
-
-        <br>
-        <br>
-
-        @foreach($allArticles as $article)
-
-            {{ $article->title }}
             <br>
-            {{ $article->abbreviation }}
-            <br>
-            <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
+
+            <a href="{{ route('cmsHome') }}">Go back to the CMS</a>
 
             <br>
             <br>
 
-        @endforeach
+            @foreach($allArticles as $article)
+
+                {{ $article->title }}
+                <br>
+                {{ $article->abbreviation }}
+                <br>
+                <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
+
+                <br>
+                <br>
+
+            @endforeach
 
         @else
 
-@section('user')
+            @section('user')
 
-    You are signed in as:
+            You are signed in as:
 
-    <br>
+            <br>
 
-    {{ Auth::user()->email }}
+            {{ Auth::user()->email }}
 
-    <br>
+            <br>
 
-    <a href="{{ route('logout') }}">LogOut</a>
+            <a href="{{ route('logout') }}">LogOut</a>
 
-@stop
+            @stop
 
             @foreach($allArticles as $article)
 

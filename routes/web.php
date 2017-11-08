@@ -17,6 +17,9 @@ Route::get('/logout', 'userController@logout')->name('logout');
 
 Route::get('/articles/{articleId}', 'articleController@displayFullArticle')->name('displayFullArticle');
 
+Route::get('/searchForm', 'articleController@searchForm')->name('searchForm');
+
+Route::post('/searchArticle', 'articleController@searchArticle')->name('searchArticle');
 
 
 // CMS ROUTES

@@ -18,4 +18,41 @@ class articleController extends Controller
 
     }
 
+    public function searchForm(){
+
+        return view('searchForm');
+
+    }
+
+    public function searchArticle(Request $request){
+
+        $searchedKeyword = $request->keyword;
+
+        $articles = article::all();
+
+        $articlesWithKeywordInTitle = array();
+
+        foreach($articles as $article){
+
+            $pos = stripos($article->title, $searchedKeyword);
+
+            if($pos !== false){
+
+                $articlesWithKeywordInTitle[] = $article;
+
+            }
+
+        }
+
+        if(empty($articlesWithKeywordInTitle)){
+
+            return redirect()->route('searchForm')->with('status','Try a different keyword');
+        }
+
+
+        return view('articlesWithSearchedKeyword', array('articlesWithKeywordInTitle'=>$articlesWithKeywordInTitle));
+
+
+    }
+
 }
