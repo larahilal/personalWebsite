@@ -52,35 +52,37 @@
             padding: 10px 200px 0 200px;
         }
 
-        .title {
-            font-size: 54px;
-        }
-
         .links > a {
             color: #636b6f;
             padding: 0 25px;
             font-size: 12px;
             font-weight: 600;
             letter-spacing: .1rem;
-            text-decoration: none;
+            text-decoration: red;
             text-transform: uppercase;
         }
 
-        .m-b-md {
-            margin-bottom: 30px;
+        .pagination {
+
         }
+
+        .pagination li {
+            display: inline;
+        }
+
     </style>
 </head>
 <body>
 
-
 <div class="flex-center position-ref full-height">
+
 
     <div class="top-left">
 
         @yield('backButton')
 
     </div>
+
     <div class="top-right">
 
         @yield('user')
@@ -88,18 +90,19 @@
     </div>
 
     <div class="content">
-        <div class="title m-b-md">
 
-        </div>
-
-        <div class="links">
+        <div>
 
             @yield('content')
 
-
         </div>
+
     </div>
+
+
 </div>
+
+
 </body>
 </html>
 

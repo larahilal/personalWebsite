@@ -30,8 +30,6 @@ class articleController extends Controller
 
         $articles = article::where('title', 'LIKE', '%' . $searchedKeyword . '%')->get();
 
-       // $articlesWithKeywordInTitle = array();
-
         if(count($articles) == 0){
 
             return redirect()->route('searchForm')->with('status','Try a different keyword');
