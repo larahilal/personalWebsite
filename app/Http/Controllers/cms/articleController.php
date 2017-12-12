@@ -32,11 +32,6 @@ class articleController extends Controller
         $destinationImage = imagecreatetruecolor($newWidth, $newHeight);
         imagecopyresampled($destinationImage, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
 
-
-        // This line down doesn't work because imagepng returns a bool
-
-        //echo public_path(); // /Users/larahilal/Development/personal-website/public
-
         imagepng($destinationImage, "thumbnail.png", 9);
 
         $pathToFile = public_path() . '/thumbnail.png';
@@ -80,7 +75,7 @@ class articleController extends Controller
 
     public function getAllArticles(){
 
-        $allArticles = article::all();
+        $allArticles = article::paginate(2);
 
         foreach($allArticles as $article){
 

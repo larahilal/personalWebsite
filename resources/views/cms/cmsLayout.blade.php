@@ -62,6 +62,11 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        .pagination li {
+            display: inline;
+        }
+        
     </style>
 </head>
 <body>

@@ -35,5 +35,6 @@
 
     </table>
 
+    {{ $allArticles->links() }}
 
 @stop
