@@ -2,6 +2,18 @@
 
 @section('content')
 
+
+    @if (Auth::check('laravel_session'))
+
+
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }} <br>
+            </div>
+        @endif
+
+    @endif
+
     This is Lara's personal blog.<br><br>
     Click <a href="{{ route('searchForm') }}">here</a> to search for a specific article.<br>
 
@@ -48,5 +60,7 @@
     @endforeach
 
     {{ $allArticles->links() }}
+
+
 
 @stop

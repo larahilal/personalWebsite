@@ -66,7 +66,7 @@
         .pagination li {
             display: inline;
         }
-        
+
     </style>
 </head>
 <body>

@@ -37,6 +37,8 @@ class userController extends Controller
 
         $user->save();
 
+        Auth::login($user); //This line makes sure user gets logged in after registering.
+
         return redirect()->route('home')->with('status', 'Congrats! Comment Away!');
 
 

@@ -44,9 +44,6 @@ class articleController extends Controller
     }
 
 
-
-
-
     public function saveNewArticle(Request $request){
 
         $imagePath = request()->file('image')->store('images', 's3');
@@ -98,6 +95,24 @@ class articleController extends Controller
     public function updateArticle(Request $request){
 
         $article = article::where('id', $request->id)->first();
+
+        if($request->hasFile('image')) {
+
+            $imagePath = request()->file('image')->store('images', 's3');
+
+            $article->imagePath = $imagePath;
+
+            $article->thumbnailPath = 1;
+
+            $article->save();
+
+            $thumbnailName = $this->resizeImageToThumbnail($article);
+
+            $article->thumbnailPath = $thumbnailName;
+
+            $article->save();
+
+        }
 
         $article->title = $request->title;
 

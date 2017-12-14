@@ -23,7 +23,7 @@
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        <textarea rows="4" cols="50" name="comment">Enter text here...</textarea>
+        <textarea rows="4" cols="50" name="comment">Comment here...</textarea>
 
     </form>
 
