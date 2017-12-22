@@ -46,6 +46,10 @@
 
     @endauth
 
+@stop
+
+@section('articles')
+
     @foreach($allArticles as $article)
 
         {{ $article->title }}

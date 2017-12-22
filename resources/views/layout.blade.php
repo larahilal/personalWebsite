@@ -52,6 +52,11 @@
             padding: 10px 200px 0 200px;
         }
 
+        .articles {
+            text-align: left;
+            padding: 10px 200px 0 200px;
+        }
+
         .links > a {
             color: #636b6f;
             padding: 0 25px;
@@ -91,9 +96,12 @@
 
     <div class="content">
 
-        <div>
+        @yield('content')
 
-            @yield('content')
+        <div class="articles">
+
+
+            @yield('articles')
 
         </div>
 

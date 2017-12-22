@@ -7,13 +7,17 @@
 @stop
 
 
-@section('content')
+@section('articles')
 
     <img src="{{ config('app.images_url') . $article->imagePath }}" style="width:50px;height:33px">
 
     <br>
 
     {{ $article->title }}
+
+    <br>
+
+    {{ $article->created_at->format('d m Y') }}
 
     <br>
 
@@ -26,7 +30,5 @@
         <textarea rows="4" cols="50" name="comment">Comment here...</textarea>
 
     </form>
-
-
 
 @stop

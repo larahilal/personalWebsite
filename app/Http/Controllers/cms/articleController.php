@@ -102,7 +102,7 @@ class articleController extends Controller
 
             $article->imagePath = $imagePath;
 
-            $article->thumbnailPath = 1;
+            //$article->thumbnailPath = 1;
 
             $article->save();
 

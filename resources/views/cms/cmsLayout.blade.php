@@ -45,6 +45,10 @@
             text-align: center;
         }
 
+        .articles {
+            text-align: left;
+        }
+
         .title {
             font-size: 54px;
         }
@@ -92,6 +96,7 @@
         <div class="links">
 
             @yield('content')
+            @yield('articles')
 
 
         </div>
