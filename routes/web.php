@@ -23,6 +23,8 @@ Route::post('/searchArticle', 'articleController@searchArticle')->name('searchAr
 
 Route::post('/saveComment', 'articleController@saveComment')->name('saveComment');
 
+Route::get('/displayAuthorPage/{userId}', 'userController@displayAuthorPage')->name('displayAuthorPage');
+
 
 
 // CMS ROUTES

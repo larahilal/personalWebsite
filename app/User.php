@@ -28,4 +28,11 @@ class User extends Authenticatable
     ];
 
     public $timestamps = false;
+
+    public function articles()
+    {
+        return $this->hasMany('App\article');
+
+    }
+
 }

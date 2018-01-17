@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\article;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Auth;
 
 class articleController extends Controller
 {
@@ -55,6 +56,8 @@ class articleController extends Controller
         $article->imagePath = $imagePath;
 
         $article->body = $request->body;
+
+        $article->user_id = Auth::user()->id;
 
         $article->thumbnailPath = 1;
 

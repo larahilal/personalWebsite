@@ -11,7 +11,7 @@ class homeController extends Controller
 
     public function displayHome(){
 
-        $allArticles = article::paginate(2);
+        $allArticles = article::with('user')->paginate(2);
 
         foreach($allArticles as $article){
 

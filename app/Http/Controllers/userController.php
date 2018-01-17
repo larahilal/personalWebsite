@@ -81,5 +81,11 @@ class userController extends Controller
 
     }
 
+    public function displayAuthorPage($userId){
+
+        $author = User::where('id', $userId)->with('articles')->first();
+
+        return view('authorPage', array('author' => $author));
+    }
 
 }
