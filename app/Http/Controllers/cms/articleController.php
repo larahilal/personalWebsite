@@ -133,6 +133,8 @@ class articleController extends Controller
 
         $article->delete();
 
+        return redirect()->route('cmsHome');
+
     }
 
 

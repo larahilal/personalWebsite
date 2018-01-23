@@ -21,9 +21,9 @@ Route::get('/searchForm', 'articleController@searchForm')->name('searchForm');
 
 Route::post('/searchArticle', 'articleController@searchArticle')->name('searchArticle');
 
-Route::post('/saveComment', 'articleController@saveComment')->name('saveComment');
+Route::post('/saveComment', 'commentController@saveComment')->name('saveComment');
 
-Route::get('/displayAuthorPage/{userId}', 'userController@displayAuthorPage')->name('displayAuthorPage');
+Route::get('/authors/{userId}', 'userController@displayAuthorPage')->name('displayAuthorPage');
 
 
 

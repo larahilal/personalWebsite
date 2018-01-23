@@ -6,8 +6,15 @@
 
 @stop
 
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }} <br><br>
+        <a href="{{ route('loginForm') }}">Log in</a>
+    </div>
+@endif
 
-@section('articles')
+
+@section('content')
 
     <img src="{{ config('app.images_url') . $article->imagePath }}" style="width:50px;height:33px">
 
@@ -28,11 +35,26 @@
 
     <br><br>
 
+    @foreach($comments as $comment)
+
+        {{ $comment->user->first_name . ' ' . $comment->user->last_name}}<br>
+
+        {{ $comment->body }} <br><br>
+
+    @endforeach
+
+    <br><br>
+
     <form action={{ route('saveComment') }} method="POST">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        <textarea rows="4" cols="50" name="comment">Comment here...</textarea>
+        <textarea rows="4" cols="50" name="body">Comment here...</textarea>
+
+        <input type="hidden" name="articleId" value="{{ $article->id }}">
+
+        Submit:
+        <input type="submit" value="Submit">
 
     </form>
 

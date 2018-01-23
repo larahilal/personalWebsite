@@ -48,13 +48,9 @@
         }
 
         .content {
-            text-align: center;
-            padding: 10px 200px 0 200px;
-        }
-
-        .articles {
             text-align: left;
-            padding: 10px 200px 0 200px;
+            padding: 100px 200px 0 200px;
+            white-space: pre-wrap;
         }
 
         .links > a {
@@ -98,12 +94,6 @@
 
         @yield('content')
 
-        <div class="articles">
-
-
-            @yield('articles')
-
-        </div>
 
     </div>
 

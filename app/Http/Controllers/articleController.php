@@ -14,7 +14,9 @@ class articleController extends Controller
 
         $article = article::where('id', $articleId)->first();
 
-        return view('fullArticle', array('article'=>$article));
+        $comments = article::find($articleId)->comments;
+
+        return view('fullArticle', array('article'=>$article, 'comments'=>$comments));
 
     }
 

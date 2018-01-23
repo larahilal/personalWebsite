@@ -1,12 +1,12 @@
 @extends('layout')
 
-@section('articles')
+@section('content')
 
     {{ $author->email }}
 
     <br>
     <br>
-    
+
     @foreach( $author->articles as $article)
 
 

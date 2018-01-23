@@ -33,7 +33,7 @@
                 {{ Auth::user()->email }}
                 <br>
                 <a href="{{ route('cmsHome') }}">Go back to the CMS</a>
-                <br><br>
+
             @stop
 
         @else
@@ -46,29 +46,20 @@
 
     @endauth
 
-@stop
-
-@section('articles')
 
     @foreach($allArticles as $article)
 
         {{ $article->title }}
-        <br>
 
         <a href="{{ route('displayAuthorPage', array('user_id' =>$article->user->id)) }}">Author: {{ $article->user->email }} </a>
 
-        <br>
         {{ $article->abbreviation }}
-        <br>
+
         <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
 
-        <br>
-        <br>
 
     @endforeach
 
-    {{ $allArticles->links() }}
-
-
-
 @stop
+
+{{ $allArticles->links() }}

@@ -42,10 +42,6 @@
         }
 
         .content {
-            text-align: center;
-        }
-
-        .articles {
             text-align: left;
         }
 
@@ -96,7 +92,6 @@
         <div class="links">
 
             @yield('content')
-            @yield('articles')
 
 
         </div>
