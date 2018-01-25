@@ -13,8 +13,6 @@ class homeController extends Controller
 
     public function displayHome(){
 
-        $user_id = Auth::user()->id;
-
         $allArticles = article::with('user')->paginate(2);
 
         foreach($allArticles as $article){
@@ -23,7 +21,7 @@ class homeController extends Controller
 
         }
 
-        return view ('home', array('allArticles' => $allArticles, 'userId'=>$user_id));
+        return view ('home', array('allArticles' => $allArticles));
 
     }
 }

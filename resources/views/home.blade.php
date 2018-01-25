@@ -32,7 +32,7 @@
                 <br>
                 {{ Auth::user()->email }}
                 <br>
-                <a href="{{ route('displayUserProfile', array('userId'=>$userId)) }}">View profile</a><br>
+                <a href="{{ route('displayUserProfile', array('userId'=>Auth::user()->id)) }}">View profile</a><br>
                 <a href="{{ route('cmsHome') }}">Go back to the CMS</a>
 
             @stop
@@ -41,7 +41,7 @@
             @section('user')
                 You are signed in as:<br>
                 {{ Auth::user()->email }}<br>
-                <a href="{{ route('displayUserProfile', array('userId'=>$userId)) }}">View profile</a><br>
+                <a href="{{ route('displayUserProfile', array('userId'=>Auth::user()->id)) }}">View profile</a><br>
                 <a href="{{ route('logout') }}">LogOut</a>
             @stop
         @endif

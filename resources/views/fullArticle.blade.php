@@ -16,7 +16,7 @@
 
 @section('content')
 
-    <img src="{{ config('app.images_url') . $article->imagePath }}" style="width:50px;height:33px">
+    <img src="{{ config('app.images_url') . $article->imagePath }}" style="width:50px;height:33px"><br>
 
 
     {{ $article->title }}
