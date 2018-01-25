@@ -12,6 +12,7 @@ use App\User;
 
 
 
+
 class userController extends Controller
 {
 
@@ -86,6 +87,48 @@ class userController extends Controller
         $author = User::where('id', $userId)->with('articles')->first();
 
         return view('authorPage', array('author' => $author));
+    }
+
+    public function displayUserProfile(){
+
+        $user = User::where('id', Auth::user()->id)->first();
+
+        //$user_id = Auth::user()->id;
+
+        return view('userProfile', array('user'=> $user));
+
+    }
+
+    public function updateProfile(Request $request){
+
+        $user = User::where('id', $request->userId)->first();
+
+        $user->first_name = $request->first_name;
+
+        $user->last_name = $request->last_name;
+
+        $user->email = $request->email;
+
+        $user->password = $request->password;
+
+        if($request->hasFile('image')) {
+
+            $imagePath = request()->file('image')->store('images', 's3');
+
+            $user->imagePath = $imagePath;
+
+            $user->save();
+
+            $thumbnailName = resizeImageToThumbnail($user->imagePath);
+
+            $user->thumbnailPath = $thumbnailName;
+
+            $user->save();
+
+        }
+
+        return redirect()->route('home');
+
     }
 
 }

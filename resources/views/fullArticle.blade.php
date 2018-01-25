@@ -27,7 +27,7 @@
 
     <br>
 
-    {{ $article->body }}
+    {!! nl2br($article->body) !!}
 
     <br><br>
 

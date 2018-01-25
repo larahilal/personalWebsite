@@ -25,6 +25,10 @@ Route::post('/saveComment', 'commentController@saveComment')->name('saveComment'
 
 Route::get('/authors/{userId}', 'userController@displayAuthorPage')->name('displayAuthorPage');
 
+Route::get('/users/profile/{userId}', 'userController@displayUserProfile')->name('displayUserProfile');
+
+Route::post('/users/profile/update', 'userController@updateProfile')->name('updateProfile');
+
 
 
 // CMS ROUTES

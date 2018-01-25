@@ -5,8 +5,8 @@ namespace App\Http\Controllers\cms;
 use Illuminate\Http\Request;
 use App\article;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use Auth;
+
 
 class articleController extends Controller
 {
@@ -17,33 +17,6 @@ class articleController extends Controller
         return view('cms/cmsNewArticleForm');
 
     }
-
-    public function resizeImageToThumbnail($article){
-
-        $imagePath = config('app.images_url') . $article->imagePath;
-
-
-
-        $source = imagecreatefrompng($imagePath);
-        list($width, $height) = getimagesize($imagePath);
-
-        $newWidth = $width/5;
-        $newHeight = $height/5;
-
-        $destinationImage = imagecreatetruecolor($newWidth, $newHeight);
-        imagecopyresampled($destinationImage, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-
-        imagepng($destinationImage, "thumbnail.png", 9);
-
-        $pathToFile = public_path() . '/thumbnail.png';
-
-        $thumbnailName = 'thumbnails/' . $article->imagePath;
-
-        Storage::put($thumbnailName, file_get_contents($pathToFile));
-
-        return $thumbnailName;
-    }
-
 
     public function saveNewArticle(Request $request){
 
@@ -63,7 +36,7 @@ class articleController extends Controller
 
         $article->save();
 
-        $thumbnailName = $this->resizeImageToThumbnail($article);
+        $thumbnailName = $this->resizeImageToThumbnail($article->imagePath);
 
         $article->thumbnailPath = $thumbnailName;
 
@@ -105,11 +78,9 @@ class articleController extends Controller
 
             $article->imagePath = $imagePath;
 
-            //$article->thumbnailPath = 1;
-
             $article->save();
 
-            $thumbnailName = $this->resizeImageToThumbnail($article);
+            $thumbnailName = $this->resizeImageToThumbnail($article->imagePath);
 
             $article->thumbnailPath = $thumbnailName;
 

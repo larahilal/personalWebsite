@@ -50,7 +50,6 @@
         .content {
             text-align: left;
             padding: 100px 200px 0 200px;
-            white-space: pre-wrap;
         }
 
         .links > a {

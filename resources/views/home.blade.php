@@ -32,6 +32,7 @@
                 <br>
                 {{ Auth::user()->email }}
                 <br>
+                <a href="{{ route('displayUserProfile', array('userId'=>$userId)) }}">View profile</a><br>
                 <a href="{{ route('cmsHome') }}">Go back to the CMS</a>
 
             @stop
@@ -40,6 +41,7 @@
             @section('user')
                 You are signed in as:<br>
                 {{ Auth::user()->email }}<br>
+                <a href="{{ route('displayUserProfile', array('userId'=>$userId)) }}">View profile</a><br>
                 <a href="{{ route('logout') }}">LogOut</a>
             @stop
         @endif
@@ -49,17 +51,20 @@
 
     @foreach($allArticles as $article)
 
-        {{ $article->title }}
+        <h4>{{ $article->title }}</h4>
 
         <a href="{{ route('displayAuthorPage', array('user_id' =>$article->user->id)) }}">Author: {{ $article->user->email }} </a>
 
-        {{ $article->abbreviation }}
+        <p>{!! $article->abbreviation !!}</p>
 
         <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
 
+        <hr />
 
     @endforeach
 
+    {{ $allArticles->links() }}
+
+
 @stop
 
-{{ $allArticles->links() }}
