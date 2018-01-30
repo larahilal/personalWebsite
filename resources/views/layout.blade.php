@@ -10,6 +10,12 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+    <div class="header" id="myHeader">
+
+        <h2>Lara's blog</h2>
+
+    </div>
+
     <!-- Styles -->
     <style>
         html, body {
@@ -49,7 +55,7 @@
 
         .content {
             text-align: left;
-            padding: 100px 200px 0 200px;
+            padding: 80px 200px 50px 200px;
         }
 
         .links > a {
@@ -68,6 +74,12 @@
 
         .pagination li {
             display: inline;
+        }
+
+        .header {
+            padding: 10px 16px;
+            background: #555;
+            color: #f1f1f1;
         }
 
     </style>
