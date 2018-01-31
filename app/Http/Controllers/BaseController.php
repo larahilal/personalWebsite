@@ -11,6 +11,8 @@ class BaseController extends Controller
     public function __construct()
     {
         //its just a dummy data object.
+
+
         $logo = logo::first();
 
         // Sharing is caring
