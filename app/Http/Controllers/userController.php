@@ -13,7 +13,7 @@ use App\User;
 
 
 
-class userController extends Controller
+class userController extends BaseController
 {
 
     public function signUp(){

@@ -8,7 +8,7 @@ use App\comment;
 
 use Auth;
 
-class commentController extends Controller
+class commentController extends BaseController
 {
     public function saveComment(request $request){
 

@@ -45,3 +45,5 @@ Route::post('/cms/articles/update', 'cms\articleController@updateArticle')->name
 
 Route::get('/cms/articles/delete/{articleId}', 'cms\articleController@deleteArticle')->name('deleteArticle');
 
+Route::get('/cms/logoForm', 'cms\homeController@logoForm')->name('logoForm');
+Route::post('/cms/saveLogo', 'cms\homeController@saveLogo')->name('saveLogo');

@@ -8,11 +8,9 @@ use App\article;
 
 use Auth;
 
-class homeController extends Controller
+class homeController extends BaseController
 {
-
     public function displayHome(){
-
         $allArticles = article::with('user')->paginate(2);
 
         foreach($allArticles as $article){
@@ -24,4 +22,5 @@ class homeController extends Controller
         return view ('home', array('allArticles' => $allArticles));
 
     }
+
 }

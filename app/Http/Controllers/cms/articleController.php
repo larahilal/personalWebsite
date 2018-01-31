@@ -4,11 +4,11 @@ namespace App\Http\Controllers\cms;
 
 use Illuminate\Http\Request;
 use App\article;
-use App\Http\Controllers\Controller;
 use Auth;
+use App\Http\Controllers\BaseController;
 
 
-class articleController extends Controller
+class articleController extends BaseController
 {
 
     public function newArticleForm()

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\article;
 
-class articleController extends Controller
+class articleController extends BaseController
 {
 
 

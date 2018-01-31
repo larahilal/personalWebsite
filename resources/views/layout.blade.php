@@ -12,7 +12,7 @@
 
     <div class="header" id="myHeader">
 
-        <h2>Lara's blog</h2>
+        <img src="{{ config('app.images_url') . $logo->imagePath }}" style="width:50px;height:33px"> <h2>Lara's blog</h2>
 
     </div>
 
