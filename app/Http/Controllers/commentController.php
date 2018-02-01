@@ -12,7 +12,7 @@ class commentController extends BaseController
 {
     public function saveComment(request $request){
 
-        if(Auth::user()) {
+        if(Auth::User()) {
 
             $article_id = $request->articleId;
 
@@ -20,7 +20,7 @@ class commentController extends BaseController
 
             $comment->body = $request->body;
 
-            $comment->user_id = Auth::user()->id;
+            $comment->user_id = Auth::User()->id;
 
             $comment->article_id = $request->articleId;
 

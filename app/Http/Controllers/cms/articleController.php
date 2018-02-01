@@ -22,9 +22,6 @@ class articleController extends BaseController
     public function saveNewArticle(Request $request)
     {
 
-        //$request->flash();
-
-
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'body' => 'required',
@@ -48,7 +45,7 @@ class articleController extends BaseController
 
         $article->body = $request->body;
 
-        $article->user_id = Auth::user()->id;
+        $article->user_id = Auth::User()->id;
 
         $article->thumbnailPath = 1;
 
@@ -135,7 +132,7 @@ class articleController extends BaseController
 
         $article->body = $request->body;
 
-        $article->user_id = Auth::user()->id;
+        $article->user_id = Auth::User()->id;
 
         $article->save();
 

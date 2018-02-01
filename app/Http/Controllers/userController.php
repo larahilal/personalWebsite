@@ -93,8 +93,6 @@ class userController extends BaseController
 
         $user = User::where('id', Auth::user()->id)->first();
 
-        //$user_id = Auth::user()->id;
-
         return view('userProfile', array('user'=> $user));
 
     }

@@ -11,6 +11,7 @@ use Auth;
 class homeController extends BaseController
 {
     public function displayHome(){
+
         $allArticles = article::with('user')->paginate(2);
 
         foreach($allArticles as $article){
