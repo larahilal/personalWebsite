@@ -14,6 +14,12 @@
 
     @endif
 
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }} <br>
+        </div>
+    @endif
+
     This is Lara's personal blog.<br><br>
     Click <a href="{{ route('searchForm') }}">here</a> to search for a specific article.<br>
 

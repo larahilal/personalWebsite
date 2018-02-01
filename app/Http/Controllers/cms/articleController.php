@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\article;
 use Auth;
 use App\Http\Controllers\BaseController;
+use Validator;
 
 
 class articleController extends BaseController
@@ -18,7 +19,24 @@ class articleController extends BaseController
 
     }
 
-    public function saveNewArticle(Request $request){
+    public function saveNewArticle(Request $request)
+    {
+
+        //$request->flash();
+
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'body' => 'required',
+            'image'=> 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('newArticleForm')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $imagePath = request()->file('image')->store('images', 's3');
 
@@ -36,7 +54,7 @@ class articleController extends BaseController
 
         $article->save();
 
-        $thumbnailName = $this->resizeImageToThumbnail($article->imagePath);
+        $thumbnailName = resizeImageToThumbnail($article->imagePath);
 
         $article->thumbnailPath = $thumbnailName;
 
@@ -64,13 +82,38 @@ class articleController extends BaseController
 
         $article = article::where('id', $articleId)->first();
 
-        return view('cms/cmsEditArticle', array('article'=>$article));
+        if(Auth::check() and (Auth::check()==$article->user_id)) {
+
+            return view('cms/cmsEditArticle', array('article' => $article));
+
+        }elseif(Auth::check()and (Auth::check()!=$article->user_id)){
+
+            return redirect()->route('home')->with('status','You can only update articles you wrote');
+
+        }else{
+
+            return redirect()->route('loginForm')->with('status', 'You need to be logged in to edit content');
+
+        }
 
     }
 
     public function updateArticle(Request $request){
 
         $article = article::where('id', $request->id)->first();
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'body' => 'required',
+            'image'=> 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('newArticleForm')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         if($request->hasFile('image')) {
 
@@ -80,7 +123,7 @@ class articleController extends BaseController
 
             $article->save();
 
-            $thumbnailName = $this->resizeImageToThumbnail($article->imagePath);
+            $thumbnailName = resizeImageToThumbnail($article->imagePath);
 
             $article->thumbnailPath = $thumbnailName;
 
@@ -91,6 +134,8 @@ class articleController extends BaseController
         $article->title = $request->title;
 
         $article->body = $request->body;
+
+        $article->user_id = Auth::user()->id;
 
         $article->save();
 
