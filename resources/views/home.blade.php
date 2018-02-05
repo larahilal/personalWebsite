@@ -2,18 +2,6 @@
 
 @section('content')
 
-
-    @if (Auth::check('laravel_session'))
-
-
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }} <br>
-            </div>
-        @endif
-
-    @endif
-
     @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }} <br>
@@ -59,7 +47,7 @@
 
         <h4>{{ $article->title }}</h4>
 
-        <a href="{{ route('displayAuthorPage', array('user_id' =>$article->user->id)) }}">Author: {{ $article->user->email }} </a>
+        <a href="{{ route('displayAuthorPage', array('user_id' =>$article->user->id)) }}">Author: {{ $article->user->first_name . ' ' . $article->user->last_name }} </a>
 
         <p>{!! $article->abbreviation !!}</p>
 

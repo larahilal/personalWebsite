@@ -10,6 +10,17 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+    <div class="header" id="myHeader">
+
+        @if($logo)
+
+            <img src="{{ config('app.images_url') . $logo->imagePath }}" style="width:50px;height:33px">
+        @endif
+
+        <h2>Lara's blog CMS</h2>
+
+    </div>
+
     <!-- Styles -->
     <style>
         html, body {
@@ -67,6 +78,13 @@
             display: inline;
         }
 
+        .header {
+            padding: 10px 16px;
+            background: #555;
+            color: #f1f1f1;
+        }
+
+
     </style>
 </head>
 <body>
@@ -77,7 +95,7 @@
 
 </div>
 
-<div class="flex-center position-ref full-height">
+<div class="position-ref full-height">
 
 
 
@@ -86,8 +104,6 @@
         <div class="title m-b-md">
 
         </div>
-
-        <h1> CMS </h1>
 
         <div class="links">
 

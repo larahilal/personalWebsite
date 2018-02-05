@@ -1,0 +1,1 @@
+Thank you {{ $user->first_name }} for signing up!

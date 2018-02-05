@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 use App\User;
 
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\UserSignedUp;
+
 
 
 
@@ -38,9 +42,12 @@ class userController extends BaseController
 
         $user->save();
 
+        Mail::to($user)->send(new UserSignedUp($user));
+
         Auth::login($user); //This line makes sure user gets logged in after registering.
 
         return redirect()->route('home')->with('status', 'Congrats! Comment Away!');
+
 
 
     }

@@ -12,7 +12,7 @@ class homeController extends BaseController
 {
     public function displayHome(){
 
-        $allArticles = article::with('user')->paginate(2);
+        $allArticles = article::with('user')->orderBy('created_at', 'desc')->paginate(2);
 
         foreach($allArticles as $article){
 

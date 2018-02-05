@@ -19,7 +19,17 @@
     <img src="{{ config('app.images_url') . $article->imagePath }}" style="width:50px;height:33px"><br>
 
 
-    {{ $article->title }}
+    <h1>{{ $article->title }}</h1>
+
+    <br>
+
+    Author:<br>
+
+    <a href="{{ route('displayAuthorPage', array('user_id' =>$article->user->id)) }}">Author: {{ $article->user->first_name . ' ' . $article->user->last_name }} </a>
+
+    <br>
+
+    <img src="{{ config('app.images_url') . $article->User->imagePath }}" style="width:50px;height:33px"><br>
 
     <br>
 
@@ -37,7 +47,9 @@
 
     @foreach($comments as $comment)
 
-        {{ $comment->user->first_name . ' ' . $comment->user->last_name}}<br>
+        <img src="{{ config('app.images_url') . $comment->User->imagePath }}" style="width:50px;height:33px"><br>
+
+        {{ $comment->User->first_name . ' ' . $comment->User->last_name}}<br>
 
         {{ $comment->body }} <br><br>
 

@@ -63,7 +63,7 @@ class articleController extends BaseController
 
     public function getAllArticles(){
 
-        $allArticles = article::paginate(2);
+        $allArticles = article::orderBy('created_at', 'desc')->paginate(2);
 
         foreach($allArticles as $article){
 

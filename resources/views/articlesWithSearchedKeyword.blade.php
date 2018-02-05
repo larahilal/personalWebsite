@@ -4,7 +4,7 @@
 
     @foreach($articles as $article)
 
-        {{ $article->title }}
+        <h1>{{ $article->title }}</h1>
         <br>
         {{ $article->abbreviation }}
         <br>
