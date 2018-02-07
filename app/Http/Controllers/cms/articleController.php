@@ -107,7 +107,7 @@ class articleController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('newArticleForm')
+            return redirect()->route('editArticle', array('article'=> $article))
                 ->withErrors($validator)
                 ->withInput();
         }
