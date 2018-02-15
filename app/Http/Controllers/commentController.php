@@ -32,7 +32,7 @@ class commentController extends BaseController
 
         } else {
 
-            $article_id = $$request->articleId;
+            $article_id = $request->articleId;
 
             return redirect()->route('displayFullArticle', array('articleId' => $article_id))->with('status', 'Please sign in to comment an article');
 
