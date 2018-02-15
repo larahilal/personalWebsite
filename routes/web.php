@@ -33,17 +33,21 @@ Route::post('/users/profile/update', 'userController@updateProfile')->name('upda
 
 // CMS ROUTES
 
-Route::get('/cms/', 'cms\homeController@cmsHome')->name('cmsHome');
+Route::prefix('cms')->middleware(['auth'])->group(function() {
 
-Route::get('/cms/articles/', 'cms\articleController@getAllArticles')->name('allArticles');
+    Route::get('/', 'cms\homeController@cmsHome')->name('cmsHome');
 
-Route::get('/cms/articles/newForm', 'cms\articleController@newArticleForm')->name('newArticleForm');
-Route::post('/cms/articles/save', 'cms\articleController@saveNewArticle')->name('saveNewArticle');
+    Route::get('/articles/', 'cms\articleController@getAllArticles')->name('allArticles');
 
-Route::get('/cms/articles/edit/{articleId}', 'cms\articleController@editArticle')->name('editArticle');
-Route::post('/cms/articles/update', 'cms\articleController@updateArticle')->name('updateArticle');
+    Route::get('/articles/newForm', 'cms\articleController@newArticleForm')->name('newArticleForm');
+    Route::post('/articles/save', 'cms\articleController@saveNewArticle')->name('saveNewArticle');
 
-Route::get('/cms/articles/delete/{articleId}', 'cms\articleController@deleteArticle')->name('deleteArticle');
+    Route::get('/articles/edit/{articleId}', 'cms\articleController@editArticle')->name('editArticle');
+    Route::post('/articles/update', 'cms\articleController@updateArticle')->name('updateArticle');
 
-Route::get('/cms/logoForm', 'cms\homeController@logoForm')->name('logoForm');
-Route::post('/cms/saveLogo', 'cms\homeController@saveLogo')->name('saveLogo');
+    Route::get('/articles/delete/{articleId}', 'cms\articleController@deleteArticle')->name('deleteArticle');
+
+    Route::get('/logoForm', 'cms\homeController@logoForm')->name('logoForm');
+    Route::post('/saveLogo', 'cms\homeController@saveLogo')->name('saveLogo');
+
+});

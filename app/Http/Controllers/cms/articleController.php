@@ -79,11 +79,11 @@ class articleController extends BaseController
 
         $article = article::where('id', $articleId)->first();
 
-        if(Auth::check() and (Auth::check()==$article->user_id)) {
+        if(Auth::check()==$article->user_id) {
 
             return view('cms/cmsEditArticle', array('article' => $article));
 
-        }elseif(Auth::check()and (Auth::check()!=$article->user_id)){
+        }elseif(Auth::check()!=$article->user_id){
 
             return redirect()->route('home')->with('status','You can only update articles you wrote');
 

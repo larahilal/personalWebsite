@@ -98,9 +98,17 @@ class userController extends BaseController
 
     public function displayUserProfile(){
 
-        $user = User::where('id', Auth::user()->id)->first();
+        if (Auth::check()) {
 
-        return view('userProfile', array('user'=> $user));
+            $user = User::where('id', Auth::user()->id)->first();
+
+            return view('userProfile', array('user' => $user));
+
+        }else{
+
+            return redirect()->route('loginForm');
+
+        }
 
     }
 
