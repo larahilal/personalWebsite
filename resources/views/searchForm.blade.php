@@ -1,5 +1,11 @@
 @extends('layout')
 
+@section('backButton')
+
+    <a href="{{ route('home') }}">Go Back</a>
+
+@stop
+
 @section('content')
 
     @if (session('status'))
