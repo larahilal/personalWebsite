@@ -2,31 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\CommentRepository;
 use Illuminate\Http\Request;
-
-use App\comment;
-
 use Auth;
-
-
 
 class commentController extends BaseController
 {
-    public function saveComment(request $request){
+    public function saveComment(Request $request, CommentRepository $commentRepository){
 
         if(Auth::User()) {
 
             $article_id = $request->articleId;
 
-            $comment = new comment();
-
-            $comment->body = $request->body;
-
-            $comment->user_id = Auth::User()->id;
-
-            $comment->article_id = $request->articleId;
-
-            $comment->save();
+            $commentRepository->insert($article_id, $request->body);
 
             return redirect()->route('displayFullArticle', array('articleId' => $article_id));
 

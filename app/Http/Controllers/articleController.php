@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 
 use App\article;
 
+use App\Repositories\CommentRepository;
+
 class articleController extends BaseController
 {
 
 
-    public function displayFullArticle($articleId){
+    public function displayFullArticle($articleId, CommentRepository $commentRepository){
 
         $article = article::where('id', $articleId)->first();
 
-        $comments = article::find($articleId)->comments;
+        $comments = $commentRepository->findComments($articleId);
+
+       // $comments = article::find($articleId)->comments;
 
         return view('fullArticle', array('article'=>$article, 'comments'=>$comments));
 
