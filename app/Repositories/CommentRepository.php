@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\comment;
+use App\Models\Comment;
 
-use App\article;
+use App\Models\Article;
 use Auth;
 
 
@@ -13,7 +13,7 @@ class CommentRepository
 
     public function findComments($articleId){
 
-        $comments = article::find($articleId)->comments;
+        $comments = Article::find($articleId)->comments;
 
         return $comments;
 

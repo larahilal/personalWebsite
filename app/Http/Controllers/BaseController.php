@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\logo;
+
+use App\Models\Logo;
 use View;
 
 class BaseController extends Controller
@@ -13,7 +13,7 @@ class BaseController extends Controller
         //its just a dummy data object.
 
 
-        $logo = logo::first();
+        $logo = Logo::first();
 
         // Sharing is caring
         View::share('logo', $logo);

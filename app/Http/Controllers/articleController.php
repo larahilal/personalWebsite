@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\article;
+use App\Models\Article;
 
 use App\Repositories\CommentRepository;
 
@@ -14,7 +14,7 @@ class articleController extends BaseController
 
     public function displayFullArticle($articleId, CommentRepository $commentRepository){
 
-        $article = article::where('id', $articleId)->first();
+        $article = Article::where('id', $articleId)->first();
 
         $comments = $commentRepository->findComments($articleId);
 
@@ -34,7 +34,7 @@ class articleController extends BaseController
 
         $searchedKeyword = $request->keyword;
 
-        $articles = article::where('title', 'LIKE', '%' . $searchedKeyword . '%')->get();
+        $articles = Article::where('title', 'LIKE', '%' . $searchedKeyword . '%')->get();
 
         if(count($articles) == 0){
 

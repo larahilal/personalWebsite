@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\cms;
 
 use Illuminate\Http\Request;
-use App\logo;
+use App\Models\Logo;
+use App\Models\User;
 use App\Http\Controllers\BaseController;
 
 class homeController extends BaseController
@@ -25,13 +26,21 @@ class homeController extends BaseController
 
         $imagePath = request()->file('image')->store('images', 's3');
 
-        $logo = new logo();
+        $logo = new Logo();
 
         $logo->imagePath = $imagePath;
 
         $logo->save();
 
         return redirect()->route('home');
+
+    }
+
+    public function getAllUsers(){
+
+        $allUsers = User::where('user_group_id', 2)->get();
+
+        return view('cms/cmsDisplayAllUsers', array('allUsers'=> $allUsers));
 
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\cms;
 
 use Illuminate\Http\Request;
-use App\article;
+use App\Models\Article;
 use Auth;
 use App\Http\Controllers\BaseController;
 use Validator;
@@ -37,7 +37,7 @@ class articleController extends BaseController
 
         $imagePath = request()->file('image')->store('images', 's3');
 
-        $article = new article();
+        $article = new Article();
 
         $article->title = $request->title;
 
@@ -63,7 +63,7 @@ class articleController extends BaseController
 
     public function getAllArticles(){
 
-        $allArticles = article::orderBy('created_at', 'desc')->paginate(2);
+        $allArticles = Article::orderBy('created_at', 'desc')->paginate(5);
 
         foreach($allArticles as $article){
 
@@ -77,7 +77,7 @@ class articleController extends BaseController
 
     public function editArticle($articleId){
 
-        $article = article::where('id', $articleId)->first();
+        $article = Article::where('id', $articleId)->first();
 
         if(Auth::check()==$article->user_id) {
 
@@ -97,7 +97,7 @@ class articleController extends BaseController
 
     public function updateArticle(Request $request){
 
-        $article = article::where('id', $request->id)->first();
+        $article = Article::where('id', $request->id)->first();
 
         $validator = Validator::make($request->all(), [
             'title' => 'required',
@@ -142,7 +142,7 @@ class articleController extends BaseController
 
     public function deleteArticle($articleId){
 
-        $article = article::where('id', $articleId)->first();
+        $article = Article::where('id', $articleId)->first();
 
         $article->delete();
 

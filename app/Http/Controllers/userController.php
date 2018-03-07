@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Auth;
 
-use App\User;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Mail;
 
@@ -143,5 +143,6 @@ class userController extends BaseController
         return redirect()->route('home');
 
     }
+
 
 }

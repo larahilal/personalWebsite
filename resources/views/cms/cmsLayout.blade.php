@@ -115,6 +115,8 @@
 
             <a href="{{ route('allArticles') }}">View</a>
 
+            <a href="{{ route('allUsers') }}">View all users</a>
+
             <a href="{{ route('logout') }}">Logout</a>
 
             @yield('content')

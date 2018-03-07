@@ -50,4 +50,6 @@ Route::prefix('cms')->middleware(['auth'])->group(function() {
     Route::get('/logoForm', 'cms\homeController@logoForm')->name('logoForm');
     Route::post('/saveLogo', 'cms\homeController@saveLogo')->name('saveLogo');
 
+    Route::get('/allUsers', 'cms\homeController@getAllUsers')->name('allUsers');
+
 });
