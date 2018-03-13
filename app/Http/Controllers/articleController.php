@@ -16,11 +16,20 @@ class articleController extends BaseController
 
         $article = Article::where('id', $articleId)->first();
 
+        $previousArticle = Article::where('id', '<', $articleId)->orderBy('id', 'DESC')->first();
+
+        $nextArticle = Article::where('id', '>' ,  $articleId)->orderBy('id', 'ASC')->first();
+
         $comments = $commentRepository->findComments($articleId);
 
        // $comments = article::find($articleId)->comments;
 
-        return view('fullArticle', array('article'=>$article, 'comments'=>$comments));
+        return view('fullArticle', array(
+            'article' => $article,
+            'previousArticle' => $previousArticle,
+            'nextArticle' => $nextArticle,
+            'comments' => $comments
+        ));
 
     }
 

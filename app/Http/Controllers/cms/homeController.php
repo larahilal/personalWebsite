@@ -7,7 +7,7 @@ use App\Models\Logo;
 use App\Models\User;
 use App\Http\Controllers\BaseController;
 
-class homeController extends BaseController
+class HomeController extends BaseController
 {
     public function cmsHome(){
 

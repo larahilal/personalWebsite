@@ -31,6 +31,8 @@ Route::post('/users/profile/update', 'userController@updateProfile')->name('upda
 
 
 
+
+
 // CMS ROUTES
 
 Route::prefix('cms')->middleware(['auth'])->group(function() {
@@ -51,5 +53,8 @@ Route::prefix('cms')->middleware(['auth'])->group(function() {
     Route::post('/saveLogo', 'cms\homeController@saveLogo')->name('saveLogo');
 
     Route::get('/allUsers', 'cms\homeController@getAllUsers')->name('allUsers');
+
+    Route::get('/editUserProfile/{userId}', 'cms\UserController@editUserProfile')->name('cmsEditUserProfile');
+    Route::post('/updateUserProfile', 'cms\UserController@updateUserProfile')->name('updateUserProfile');
 
 });

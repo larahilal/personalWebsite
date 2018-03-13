@@ -41,6 +41,22 @@
 
     <br><br>
 
+    @if($previousArticle)
+
+    <a href="{{ route('displayFullArticle', $previousArticle->id) }}"> Previous article </a>
+
+    <br><br>
+
+    @endif
+
+    @if($nextArticle)
+
+    <a href="{{ route('displayFullArticle', $nextArticle->id) }}"> Next article </a>
+
+    @endif
+
+    <br><br>
+
     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     <br><br>

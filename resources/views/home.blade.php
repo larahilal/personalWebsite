@@ -19,7 +19,7 @@
 
     @auth
 
-        @if(Auth::user()->email == 'lara.mustardino@gmail.com')
+        @if(Auth::user()->user_group_id == '1')
 
             @section('user')
                 You are signed in as:
