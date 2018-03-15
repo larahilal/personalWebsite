@@ -3,21 +3,48 @@
 @section('content')
 
 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <p>Please sign up</p>
 
-    <form action={{ route('register') }} method="POST">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <form action={{ route('register') }} method="POST" novalidate>
 
-        Email:
-        <input type="text" name="email"></br></br>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        Password:
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
 
-        <input type="password" name="password"></br></br>
+                    <div class="control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Password" name="password" required data-validation-required-message="Please enter your password.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
 
-        Submit:
-        <input type="submit" value="Submit">
+                    <br>
 
-    </form>
+                    <div id="success"></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+                    </div>
 
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <hr>
 
 @stop
+
+
+
+
+

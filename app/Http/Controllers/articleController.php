@@ -16,9 +16,9 @@ class articleController extends BaseController
 
         $article = Article::where('id', $articleId)->first();
 
-        $previousArticle = Article::where('id', '<', $articleId)->orderBy('id', 'DESC')->first();
+        $previousArticle = Article::select('id')->where('id', '<', $articleId)->orderBy('id', 'DESC')->first();
 
-        $nextArticle = Article::where('id', '>' ,  $articleId)->orderBy('id', 'ASC')->first();
+        $nextArticle = Article::select('id')->where('id', '>' ,  $articleId)->orderBy('id', 'ASC')->first();
 
         $comments = $commentRepository->findComments($articleId);
 

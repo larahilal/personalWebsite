@@ -1,121 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
 
-    <title>Lara's Blog</title>
+<!-- Head -->
+@include('partials.head')
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+<!-- Page Header -->
+@include('partials.header')
 
-    <div class="header" id="myHeader">
+<!-- Navigation -->
+@include('partials.nav')
 
-        @if($logo)
-
-            <img src="{{ config('app.images_url') . $logo->imagePath }}" style="width:50px;height:33px">
-        @endif
-
-        <h2>Lara's blog</h2>
-
-    </div>
-
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .top-left {
-            position: absolute;
-            left: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: left;
-            padding: 80px 200px 50px 200px;
-        }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: red;
-            text-transform: uppercase;
-        }
-
-        .pagination {
-
-        }
-
-        .pagination li {
-            display: inline;
-        }
-
-        .header {
-            padding: 10px 16px;
-            background: #555;
-            color: #f1f1f1;
-        }
-
-    </style>
-</head>
 <body>
 
-<div class="flex-center position-ref full-height">
-
-
-    <div class="top-left">
-
-        @yield('backButton')
-
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-preview">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="top-right">
+    <!-- Footer -->
+    @include('partials.footer')
 
-        @yield('user')
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    </div>
-
-    <div class="content">
-
-        @yield('content')
-
-
-    </div>
-
-
-</div>
-
+    <!-- Custom scripts for this template -->
+    <script src="/js/clean-blog.min.js"></script>
 
 </body>
 </html>

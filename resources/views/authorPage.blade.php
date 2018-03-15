@@ -1,10 +1,5 @@
 @extends('layout')
 
-@section('backButton')
-
-    <a href="{{ route('home') }}">Go Back</a>
-
-@stop
 
 @section('content')
 
@@ -20,7 +15,7 @@
     @foreach( $author->articles as $article)
 
 
-       <a href="{{ route('displayFullArticle', array('articleId' =>$article->id)) }}"> <h1>{{ $article->title }}</h1> </a>
+       <a href="{{ route('displayFullArticle', array('articleId' =>$article->id)) }}"> <h4>{{ $article->title }} </h4></a>
 
        <br>
 

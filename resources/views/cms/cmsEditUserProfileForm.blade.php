@@ -2,54 +2,69 @@
 
 @section('content')
 
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Edit User</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
 
-    <form action={{ route('updateUserProfile') }} method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="userId" value="{{ $user->id }}">
+    <div class="row">
+        <div class="col-lg-12">
 
-        First Name:
+            <form action={{ route('updateUserProfile') }} method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="userId" value="{{ $user->id }}">
 
-        <input type="text" name="first_name" value="{{ $user->first_name }}"></br></br>
+                <div class="form-group">
+                    <label>First Name:</label>
+                    <input name="first_name" value="{{ $user->first_name }}" type="text" class="form-control">
+                </div>
 
-        Last Name:
+                <div class="form-group">
+                    <label>Last Name:</label>
+                    <input name="last_name" value="{{ $user->last_name }}" type="text" class="form-control">
+                </div>
 
-        <input type="text" name="last_name" value="{{ $user->last_name }}"></br></br>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input name="email" value="{{ $user->email }}" type="text" class="form-control">
+                </div>
 
-        Email:
+                <div class="form-group">
+                    <label>Select new Group:</label>
+                    <select name="new_user_group_id" class="form-control">
+                        @foreach($allUserGroups as $userGroup)
 
-        <input type="text" name="email" value="{{ $user->email }}"></br></br>
+                            @if($userGroup->id == $user->user_group_id)
 
-        Select new Group:
-        <select name="new_user_group_id">
+                                <option value={{ $userGroup->id }} selected>{{ $userGroup->name }}</option>
 
-            @foreach($allUserGroups as $userGroup)
+                            @else
 
-                @if($userGroup->id == $user->user_group_id)
+                                <option value={{ $userGroup->id }}>{{ $userGroup->name }}</option>
 
-                    <option value={{ $userGroup->id }} selected>{{ $userGroup->name }}</option>
+                            @endif
 
-                @else
+                        @endforeach
+                    </select>
+                </div>
 
-                    <option value={{ $userGroup->id }}>{{ $userGroup->name }}</option>
+                <div class="form-group">
+                    <label>Profile Picture:</label>
+                    <input type="file" class="form-control-file" name="image">
+                </div>
 
-                @endif
+                <img src="{{ config('app.images_url') . $user->imagePath }}" style="width:50px;height:33px">
 
-            @endforeach
+                <br /><br />
 
-        </select>
+                <button type="submit" class="btn btn-primary">Submit</button>
 
-        </br></br>
+            </form>
 
-        Image:<br>
-
-        <img src="{{ config('app.images_url') . $user->imagePath }}" style="width:50px;height:33px">
-
-        <input type="file" name="image"></br></br>
-
-        Submit:
-        <input type="submit" value="Submit">
-
-    </form>
+        </div>
+    </div>
 
 
 @stop

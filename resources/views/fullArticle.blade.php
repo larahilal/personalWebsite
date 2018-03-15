@@ -1,10 +1,5 @@
 @extends('layout')
 
-@section('backButton')
-
-    <a href="{{ route('home') }}">Go Back</a>
-
-@stop
 
 @if (session('status'))
     <div class="alert alert-success">
@@ -12,6 +7,7 @@
         <a href="{{ route('loginForm') }}">Log in</a>
     </div>
 @endif
+
 
 
 @section('content')
@@ -23,9 +19,11 @@
 
     <br>
 
-    Author:<br>
-
-    <a href="{{ route('displayAuthorPage', array('user_id' =>$article->user->id)) }}">Author: {{ $article->user->first_name . ' ' . $article->user->last_name }} </a>
+    <p class="post-meta">Posted by
+        <a href="{{ route('displayAuthorPage', array('user_id' =>$article->user->id)) }}">
+        {{ $article->user->first_name . ' ' . $article->user->last_name }}
+        </a> on {{$article->created_at}}
+    </p>
 
     <br>
 
@@ -33,29 +31,27 @@
 
     <br>
 
-    {{ $article->created_at->format('d m Y') }}
-
-    <br>
-
     {!! nl2br($article->body) !!}
 
     <br><br>
 
+    <!-- Pager -->
+
     @if($previousArticle)
 
-    <a href="{{ route('displayFullArticle', $previousArticle->id) }}"> Previous article </a>
-
-    <br><br>
+    <div class="clearfix">
+        <a class="btn btn-primary float-left" href="{{ route('displayFullArticle', $previousArticle->id) }}">Previous</a>
+    </div>
 
     @endif
 
     @if($nextArticle)
 
-    <a href="{{ route('displayFullArticle', $nextArticle->id) }}"> Next article </a>
+        <div class="clearfix">
+            <a class="btn btn-primary float-right" href="{{ route('displayFullArticle', $nextArticle->id) }}">Next</a>
+        </div>
 
     @endif
-
-    <br><br>
 
     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -79,9 +75,8 @@
 
         <textarea rows="4" cols="50" name="body">Comment here...</textarea>
 
-        <input type="hidden" name="articleId" value="{{ $article->id }}">
+        <input type="hidden" name="articleId" value="{{ $article->id }}"><br>
 
-        Submit:
         <input type="submit" value="Submit">
 
     </form>

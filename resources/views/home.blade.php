@@ -8,52 +8,26 @@
         </div>
     @endif
 
-    This is Lara's personal blog.<br><br>
-    Click <a href="{{ route('searchForm') }}">here</a> to search for a specific article.<br>
-
-    @guest
-        <br><br>
-        <a href="{{ route('signUp') }}">Sign Up</a> or <a href="{{ route('loginForm') }}">Log in</a> to leave comments
-        <br><br>
-    @endguest
-
-    @auth
-
-        @if(Auth::user()->user_group_id == '1')
-
-            @section('user')
-                You are signed in as:
-                <br>
-                {{ Auth::user()->email }}
-                <br>
-                <a href="{{ route('displayUserProfile', array('userId'=>Auth::user()->id)) }}">View profile</a><br>
-                <a href="{{ route('cmsHome') }}">Go back to the CMS</a>
-
-            @stop
-
-        @else
-            @section('user')
-                You are signed in as:<br>
-                {{ Auth::user()->email }}<br>
-                <a href="{{ route('displayUserProfile', array('userId'=>Auth::user()->id)) }}">View profile</a><br>
-                <a href="{{ route('logout') }}">LogOut</a>
-            @stop
-        @endif
-
-    @endauth
-
 
     @foreach($allArticles as $article)
 
-        <h4>{{ $article->title }}</h4>
+        <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">
+        <h2>{{ $article->title }}</h2>
+        </a>
 
-        <a href="{{ route('displayAuthorPage', array('user_id' =>$article->user->id)) }}">Author: {{ $article->user->first_name . ' ' . $article->user->last_name }} </a>
+        <p class="post-meta">Posted by
+            <a href="{{ route('displayAuthorPage', array('user_id' =>$article->user->id)) }}">
+                {{ $article->user->first_name . ' ' . $article->user->last_name }}
+            </a> on {{$article->created_at}}
+        </p>
 
-        <p>{!! $article->abbreviation !!}</p>
+        <h4>{!! $article->abbreviation !!}</h4>
 
         <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
 
         <hr />
+
+
 
     @endforeach
 
