@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Articles</h1>
+            <h1 class="page-header">Searched Articles</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -29,7 +29,7 @@
                 </thead>
 
                 <tbody>
-                @foreach( $allArticles as $article )
+                @foreach( $articles as $article )
                     <tr>
                         <td>{{ $article->title }} </td>
                         <td> <a href="{{ route('editArticle', array('articleId' => $article->id)) }}"> edit </a> </td>
@@ -39,7 +39,6 @@
                 </tbody>
             </table>
 
-            {{ $allArticles->links() }}
 
         </div>
     </div>

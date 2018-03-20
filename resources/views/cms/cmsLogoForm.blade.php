@@ -2,21 +2,39 @@
 
 @section('content')
 
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Logo</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
 
 
-    <form action={{ route('saveLogo') }} method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        Add a logo:<br>
+    <div class="row">
+        <div class="col-lg-12">
 
-        <input type="file" name="image"></br></br>
+            <table width="100%" class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Add a logo</th>
+                </tr>
+                </thead>
 
-        Submit:
-        <input type="submit" value="Submit">
+                <tbody>
+                <form action={{ route('saveLogo') }} method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <tr>
+                        <td> <input type="file" name="image"> </td>
+                    </tr>
+                    <tr>
+                        <td>Submit: <input type="submit" value="Submit"></td>
+                    </tr>
+                </form>
+                </tbody>
+            </table>
 
-    </form>
-
+        </div>
+    </div>
 
 @stop
-
-

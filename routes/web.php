@@ -57,4 +57,6 @@ Route::prefix('cms')->middleware(['auth'])->group(function() {
     Route::get('/editUserProfile/{userId}', 'cms\UserController@editUserProfile')->name('cmsEditUserProfile');
     Route::post('/updateUserProfile', 'cms\UserController@updateUserProfile')->name('updateUserProfile');
 
+    Route::post('/search', 'cms\articleController@search')->name('cmsSearch');
+
 });

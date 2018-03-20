@@ -150,6 +150,24 @@ class articleController extends BaseController
 
     }
 
+    public function search(Request $request){
+
+        $searchedKeyword = $request->keyword;
+
+        $articles = Article::where('title', 'LIKE', '%' . $searchedKeyword . '%')->get();
+
+        if(count($articles) == 0){
+
+            return redirect()->route('cmsHome')->with('status','Try a different keyword');
+
+        } else {
+
+            return view('cms/cmsSearchedArticles', array('articles'=>$articles));
+
+        }
+
+    }
+
 
 
 }
