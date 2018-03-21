@@ -21,8 +21,11 @@ class HomeController extends BaseController
 
     }
 
-    public function saveLogo(Request $request)
-    {
+    public function saveLogo(Request $request){
+
+        $oldLogo = Logo::first();
+
+        $oldLogo->delete();
 
         $imagePath = request()->file('image')->store('images', 's3');
 
