@@ -35,7 +35,7 @@ class articleController extends BaseController
 
     public function searchForm(){
 
-        return view('SearchForm');
+        return view('searchForm');
 
     }
 
