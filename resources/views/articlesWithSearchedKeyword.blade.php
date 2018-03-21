@@ -13,6 +13,15 @@
         <br>
         <br>
 
+        <p class="post-meta">Posted by
+            <a href="{{ route('displayAuthorPage', array('user_id' =>$article->user->id)) }}">
+                {{ $article->user->first_name . ' ' . $article->user->last_name }}
+            </a> on {{$article->created_at}}
+        </p>
+
+        <br>
+        <br>
+
     @endforeach
 
 
