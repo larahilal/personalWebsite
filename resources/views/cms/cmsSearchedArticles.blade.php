@@ -22,7 +22,7 @@
             <table width="100%" class="table table-striped table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>Title</th>
+                    <th>Web View</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -31,7 +31,7 @@
                 <tbody>
                 @foreach( $articles as $article )
                     <tr>
-                        <td>{{ $article->title }} </td>
+                        <td><a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}"> {{ $article->title }} </a> </td>
                         <td> <a href="{{ route('editArticle', array('articleId' => $article->id)) }}"> edit </a> </td>
                         <td> <a href="{{ route('deleteArticle', array('articleId' => $article->id)) }}"> delete </a> </td>
                     </tr>
