@@ -38,6 +38,8 @@ class userController extends BaseController
 
         $user->email = $request->email;
 
+        $user->user_group_id = '2';
+
         $user->password = Hash::make($request->password);
 
         $user->save();
