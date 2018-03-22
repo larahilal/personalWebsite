@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Logo;
 use App\Models\User;
 use App\Http\Controllers\BaseController;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends BaseController
 {
@@ -25,6 +26,8 @@ class HomeController extends BaseController
 
         $oldLogo = Logo::first();
 
+        Storage::disk('s3')->delete($oldLogo->imagePath);
+
         $oldLogo->delete();
 
         $imagePath = request()->file('image')->store('images', 's3');
@@ -36,6 +39,7 @@ class HomeController extends BaseController
         $logo->save();
 
         return redirect()->route('home');
+
 
     }
 
