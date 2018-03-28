@@ -3,31 +3,31 @@
 // SITE ROUTES
 
 
-Route::get('/', 'homeController@displayHome')->name('home');
+Route::get('/', 'HomeController@displayHome')->name('home');
 
-Route::get('/signUpForm', 'userController@signUp')->name('signUp');
+Route::get('/signUpForm', 'UserController@signUp')->name('signUp');
 
-Route::post('/register', 'userController@register')->name('register');
+Route::post('/register', 'UserController@register')->name('register');
 
-Route::get('/loginForm', 'userController@loginForm')->name('loginForm');
+Route::get('/loginForm', 'UserController@loginForm')->name('loginForm');
 
-Route::post('/login', 'userController@login')->name('login');
+Route::post('/login', 'UserController@login')->name('login');
 
-Route::get('/logout', 'userController@logout')->name('logout');
+Route::get('/logout', 'UserController@logout')->name('logout');
 
-Route::get('/articles/{articleId}', 'articleController@displayFullArticle')->name('displayFullArticle');
+Route::get('/articles/{articleId}', 'ArticleController@displayFullArticle')->name('displayFullArticle');
 
-Route::get('/searchForm', 'articleController@searchForm')->name('searchForm');
+Route::get('/searchForm', 'ArticleController@searchForm')->name('searchForm');
 
-Route::post('/searchArticle', 'articleController@searchArticle')->name('searchArticle');
+Route::post('/searchArticle', 'ArticleController@searchArticle')->name('searchArticle');
 
-Route::post('/saveComment', 'commentController@saveComment')->name('saveComment');
+Route::post('/saveComment', 'CommentController@saveComment')->name('saveComment');
 
-Route::get('/authors/{userId}', 'userController@displayAuthorPage')->name('displayAuthorPage');
+Route::get('/authors/{userId}', 'UserController@displayAuthorPage')->name('displayAuthorPage');
 
-Route::get('/users/profile/{userId}', 'userController@displayUserProfile')->name('displayUserProfile');
+Route::get('/users/profile/{userId}', 'UserController@displayUserProfile')->name('displayUserProfile');
 
-Route::post('/users/profile/update', 'userController@updateProfile')->name('updateProfile');
+Route::post('/users/profile/update', 'UserController@updateProfile')->name('updateProfile');
 
 
 
@@ -37,26 +37,26 @@ Route::post('/users/profile/update', 'userController@updateProfile')->name('upda
 
 Route::prefix('cms')->middleware(['auth'])->group(function() {
 
-    Route::get('/', 'cms\homeController@cmsHome')->name('cmsHome');
+    Route::get('/', 'cms\HomeController@cmsHome')->name('cmsHome');
 
-    Route::get('/articles/', 'cms\articleController@getAllArticles')->name('allArticles');
+    Route::get('/articles/', 'cms\ArticleController@getAllArticles')->name('allArticles');
 
-    Route::get('/articles/newForm', 'cms\articleController@newArticleForm')->name('newArticleForm');
-    Route::post('/articles/save', 'cms\articleController@saveNewArticle')->name('saveNewArticle');
+    Route::get('/articles/newForm', 'cms\ArticleController@newArticleForm')->name('newArticleForm');
+    Route::post('/articles/save', 'cms\ArticleController@saveNewArticle')->name('saveNewArticle');
 
-    Route::get('/articles/edit/{articleId}', 'cms\articleController@editArticle')->name('editArticle');
-    Route::post('/articles/update', 'cms\articleController@updateArticle')->name('updateArticle');
+    Route::get('/articles/edit/{articleId}', 'cms\ArticleController@editArticle')->name('editArticle');
+    Route::post('/articles/update', 'cms\ArticleController@updateArticle')->name('updateArticle');
 
-    Route::get('/articles/delete/{articleId}', 'cms\articleController@deleteArticle')->name('deleteArticle');
+    Route::get('/articles/delete/{articleId}', 'cms\ArticleController@deleteArticle')->name('deleteArticle');
 
-    Route::get('/logoForm', 'cms\homeController@logoForm')->name('logoForm');
-    Route::post('/saveLogo', 'cms\homeController@saveLogo')->name('saveLogo');
+    Route::get('/logoForm', 'cms\HomeController@logoForm')->name('logoForm');
+    Route::post('/saveLogo', 'cms\HomeController@saveLogo')->name('saveLogo');
 
-    Route::get('/allUsers', 'cms\homeController@getAllUsers')->name('allUsers');
+    Route::get('/allUsers', 'cms\HomeController@getAllUsers')->name('allUsers');
 
     Route::get('/editUserProfile/{userId}', 'cms\UserController@editUserProfile')->name('cmsEditUserProfile');
     Route::post('/updateUserProfile', 'cms\UserController@updateUserProfile')->name('updateUserProfile');
 
-    Route::post('/search', 'cms\articleController@search')->name('cmsSearch');
+    Route::post('/search', 'cms\ArticleController@search')->name('cmsSearch');
 
 });
