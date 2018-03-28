@@ -126,21 +126,23 @@ class userController extends BaseController
 
         $user->password = $request->password;
 
-        if($request->hasFile('image')) {
+            if($request->hasFile('image')) {
 
-            $imagePath = request()->file('image')->store('images', 's3');
+                $imagePath = request()->file('image')->store('images', 's3');
 
-            $user->imagePath = $imagePath;
+                $user->imagePath = $imagePath;
 
-            $user->save();
+                $user->save();
 
-            $thumbnailName = resizeImageToThumbnail($user->imagePath);
+                $thumbnailName = resizeImageToThumbnail($user->imagePath);
 
-            $user->thumbnailPath = $thumbnailName;
+                $user->thumbnailPath = $thumbnailName;
 
-            $user->save();
+                $user->save();
 
-        }
+            }
+
+        $user->save();
 
         return redirect()->route('home');
 
