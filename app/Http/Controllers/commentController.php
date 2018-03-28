@@ -6,7 +6,7 @@ use App\Repositories\CommentRepository;
 use Illuminate\Http\Request;
 use Auth;
 
-class commentController extends BaseController
+class CommentController extends BaseController
 {
     public function saveComment(Request $request, CommentRepository $commentRepository){
 

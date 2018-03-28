@@ -8,7 +8,7 @@ use App\Models\Article;
 
 use App\Repositories\CommentRepository;
 
-class articleController extends BaseController
+class ArticleController extends BaseController
 {
 
 

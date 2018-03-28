@@ -17,7 +17,7 @@ use App\Mail\UserSignedUp;
 
 
 
-class userController extends BaseController
+class UserController extends BaseController
 {
 
     public function signUp(){

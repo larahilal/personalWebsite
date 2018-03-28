@@ -6,7 +6,7 @@ use App\Models\Article;
 
 use Auth;
 
-class homeController extends BaseController
+class HomeController extends BaseController
 {
     public function displayHome(){
 

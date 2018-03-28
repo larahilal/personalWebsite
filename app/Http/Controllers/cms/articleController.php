@@ -9,7 +9,7 @@ use App\Http\Controllers\BaseController;
 use Validator;
 
 
-class articleController extends BaseController
+class ArticleController extends BaseController
 {
 
     public function newArticleForm()
