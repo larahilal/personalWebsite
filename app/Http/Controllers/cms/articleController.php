@@ -57,7 +57,7 @@ class ArticleController extends BaseController
 
         $article->save();
 
-        return redirect()->route('cmsHome');
+        return redirect()->route('allArticles');
 
     }
 
