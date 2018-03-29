@@ -6,51 +6,82 @@
         {{ implode('', $errors->all('Please make sure all the fields are filled properly')) }}
     @endif
 
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Edit Article</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
 
+    <div class="row">
+        <div class="col-lg-12">
 
-    <form action={{ route('updateArticle') }} method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <form action={{ route('updateArticle') }} method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="id" value="{{ old('id') }}">
 
+                @if(old('title') or (old('body')) or (old('id')))
 
+                <div class="form-group">
+                    <label>Title:</label>
+                    <input type="text" name="title" value="{{ old('title') }}" type="text" class="form-control"></br></br>
+                </div>
 
+                <div class="form-group">
+                    <label>Image:</label>
+                    <input type="file" name="image" class="form-control-file" >
+                </div>
 
-        @if(old('title') or (old('body')) or (old('id')))
+                    <img src="{{ config('app.images_url') . $article->imagePath }}" style="width:50px;height:33px"></br></br>
 
-            Title:
+                <div class="form-group">
+                    <label>Body:</label>
+                    <textarea name="body" class="form-control" rows="20" cols="100" >{{ old('body') }}</textarea></br></br>
+                </div>
 
-            <input type="text" name="title" value="{{ old('title') }}"></br></br>
+                <br /><br />
 
-            <input type="file" name="image"></br></br>
+                <button type="submit" class="btn btn-primary">Submit</button>
 
-            <img src="{{ config('app.images_url') . $article->imagePath }}" style="width:50px;height:33px">
+               @else
 
-            Body:
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" name="title" value="{{ $article->title }}" type="text" class="form-control"></br></br>
+                    </div>
 
-            <textarea name="body" rows="20" cols="100" >{{ old('body') }}</textarea></br></br>
+                    <div class="form-group">
+                        <label>Image:</label>
+                        <input type="file" name="image" class="form-control-file" >
+                    </div>
 
-            <input type="hidden" name="id" value="{{ old('id') }}">
+                    <img src="{{ config('app.images_url') . $article->imagePath }}" style="width:50px;height:33px"></br></br>
 
-            Submit:
-            <input type="submit" value="Submit">
+                    <div class="form-group">
+                        <label>Body:</label>
+                        <textarea name="body" class="form-control" rows="20" cols="100" >{{ $article->body }}</textarea></br></br>
+                    </div>
 
-        @else
+                    <br /><br />
 
-            <input type="text" name="title" value="{{ $article->title }}"></br></br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
 
-            <input type="file" name="image"></br></br>
+               @endif
 
-            <img src="{{ config('app.images_url') . $article->imagePath }}" style="width:50px;height:33px">
+            </form>
 
-            <textarea name="body" rows="20" cols="100" >{{ $article->body }}</textarea></br></br>
-
-            <input type="hidden" name="id" value="{{ $article->id }}">
-
-            Submit:
-            <input type="submit" value="Submit">
-
-        @endif
-
-    </form>
+        </div>
+    </div>
 
 
 @stop
+
+
+
+
+
+
+
+
+
+
