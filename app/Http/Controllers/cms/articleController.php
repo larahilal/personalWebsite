@@ -146,7 +146,7 @@ class ArticleController extends BaseController
 
         $article->delete();
 
-        return redirect()->route('cmsHome');
+        return redirect()->route('allArticles');
 
     }
 
