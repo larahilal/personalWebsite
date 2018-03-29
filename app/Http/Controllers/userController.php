@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Mail\UserSignedUp;
 
+use Validator;
+
 
 
 
@@ -33,6 +35,18 @@ class UserController extends BaseController
 
 
     public function register(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|unique:users|max:255',
+            'password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('signUp')
+                ->withErrors($validator);
+        }
+
+
 
         $user = new User();
 
