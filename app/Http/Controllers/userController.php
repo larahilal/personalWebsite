@@ -83,6 +83,23 @@ class UserController extends BaseController
 
     public function login(Request $request){
 
+        $messages = [
+            'email.required' => 'Please enter a valid email',
+            'password.required'=> 'Please enter a valid password',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|max:255',
+            'password' => 'required',
+        ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->route('loginForm')
+                ->withErrors($validator);
+        }
+
+
+
         if (Auth::attempt(array('email' => $request->email, 'password' => $request->password))) {
 
             if($request->email == 'lara.mustardino@gmail.com'){
@@ -94,10 +111,6 @@ class UserController extends BaseController
                 return redirect()->route('home')->with('status', 'You are logged in');
 
             }
-
-        } else {
-
-            echo "didnt work";
 
         }
 

@@ -12,7 +12,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <p>Please fill in your info</p>
+            @if(count($errors))
+                {{ ' ' }}
+            @else
+                <p>Please fill in your info</p>
+            @endif
 
             <form action={{ route('login') }} method="POST" novalidate>
 
@@ -24,6 +28,9 @@
                         <input type="email" class="form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address.">
                         <p class="help-block text-danger"></p>
                     </div>
+                    @if ($errors->has('email'))
+                        <div class="error">{{ $errors->first('email') }}</div>
+                    @endif
                 </div>
 
                 <div class="control-group">
@@ -32,6 +39,9 @@
                         <input type="password" class="form-control" placeholder="Password" name="password" required data-validation-required-message="Please enter your password.">
                         <p class="help-block text-danger"></p>
                     </div>
+                    @if ($errors->has('password'))
+                        <div class="error">{{ $errors->first('password') }}</div>
+                    @endif
                 </div>
 
                 <br>
