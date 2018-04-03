@@ -36,10 +36,16 @@ class UserController extends BaseController
 
     public function register(Request $request){
 
+        $messages = [
+            'email.required' => 'Please enter a valid email',
+            'email.unique'=> 'This email has already been taken',
+            'password.required'=> 'Please enter a valid password',
+        ];
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|unique:users|max:255',
             'password' => 'required',
-        ]);
+        ], $messages);
 
         if ($validator->fails()) {
             return redirect()->route('signUp')
