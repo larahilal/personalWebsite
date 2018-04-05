@@ -43,15 +43,23 @@ class ArticleController extends BaseController
 
         $searchedKeyword = $request->keyword;
 
-        $articles = Article::where('title', 'LIKE', '%' . $searchedKeyword . '%')->get();
+        if(!empty($searchedKeyword)) {
 
-        if(count($articles) == 0){
+            $articles = Article::where('title', 'LIKE', '%' . $searchedKeyword . '%')->get();
 
-            return redirect()->route('searchForm')->with('status','Try a different keyword');
+            if (count($articles) == 0) {
+
+                return redirect()->route('searchForm')->with('status', 'Try a different keyword');
+
+            } else {
+
+                return view('articlesWithSearchedKeyword', array('articles' => $articles));
+
+            }
 
         } else {
 
-            return view('articlesWithSearchedKeyword', array('articles'=>$articles));
+            return redirect()->route('searchForm')->with('status', 'Please enter a keyword');
 
         }
 

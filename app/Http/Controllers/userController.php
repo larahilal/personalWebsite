@@ -38,8 +38,8 @@ class UserController extends BaseController
 
         $messages = [
             'email.required' => 'Please enter a valid email',
-            'email.unique'=> 'This email has already been taken',
-            'password.required'=> 'Please enter a valid password',
+            'email.unique' => 'This email has already been taken',
+            'password.required' => 'Please enter a valid password',
         ];
 
         $validator = Validator::make($request->all(), [
@@ -51,7 +51,6 @@ class UserController extends BaseController
             return redirect()->route('signUp')
                 ->withErrors($validator);
         }
-
 
 
         $user = new User();
@@ -71,7 +70,6 @@ class UserController extends BaseController
         return redirect()->route('home')->with('status', 'Congrats! Comment Away!');
 
 
-
     }
 
     public function loginForm(){
@@ -85,7 +83,7 @@ class UserController extends BaseController
 
         $messages = [
             'email.required' => 'Please enter a valid email',
-            'password.required'=> 'Please enter a valid password',
+            'password.required' => 'Please enter a valid password',
         ];
 
         $validator = Validator::make($request->all(), [
@@ -99,10 +97,9 @@ class UserController extends BaseController
         }
 
 
-
         if (Auth::attempt(array('email' => $request->email, 'password' => $request->password))) {
 
-            if($request->email == 'lara.mustardino@gmail.com'){
+            if ($request->email == 'lara.mustardino@gmail.com') {
 
                 return redirect()->route('cmsHome');
 
@@ -113,6 +110,7 @@ class UserController extends BaseController
             }
 
         }
+
 
     }
 
