@@ -23,6 +23,9 @@
 
         <h4>{!! $article->abbreviation !!}</h4>
 
+
+        <h4>{{ $article->comments->count() }} Comments</h4>
+
         <a href="{{ route('displayFullArticle', array('articleId' => $article->id)) }}">...read more</a>
 
         <hr />

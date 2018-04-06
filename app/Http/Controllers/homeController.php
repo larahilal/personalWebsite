@@ -6,13 +6,12 @@ use App\Models\Article;
 
 use Auth;
 
+
 class HomeController extends BaseController
 {
     public function displayHome(){
 
-        $allArticles = Article::with('user')->orderBy('created_at', 'desc')->paginate(2);
-
-
+        $allArticles = Article::with('user')->with('comments')->orderBy('created_at', 'desc')->paginate(2);
 
         foreach($allArticles as $article){
 
